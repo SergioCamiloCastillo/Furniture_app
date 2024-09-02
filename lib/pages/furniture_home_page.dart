@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:furniture_app/models/furniture_model.dart';
+import 'package:furniture_app/pages/items_view_page.dart';
 import 'package:furniture_app/utils/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -91,7 +92,13 @@ class __FurnitureHomePageState extends State<FurnitureHomePage> {
                     itemBuilder: (context, index) {
                       final items = mockData[index];
                       return GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) =>
+                                      ItemsViewPage(collectionModel: items)));
+                        },
                         child: Padding(
                           padding: const EdgeInsets.only(bottom: 20),
                           child: Column(
@@ -122,7 +129,8 @@ class __FurnitureHomePageState extends State<FurnitureHomePage> {
                                 height: 10,
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
                                     "${items.name.split(" ").first}\n${items.name.split(" ").last}",
